@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Company } from '../../../../core/interfaces/company/company';
 import { Observable, shareReplay, tap } from 'rxjs';
+
 import { Clinic } from '../../../../core/interfaces/clinic/clinic';
+import { Company } from '../../../../core/interfaces/company/company';
 import { Urls } from '../../../../core/urls/urls';
 import { ApiGateway } from '../../../../gateway/ApiGateway/api-gateway';
 import { DebugService } from '../../../../shared/services/debug/debug.service';
@@ -29,11 +30,20 @@ export class CompanyService
     this.cache$ = undefined;
   }
 
-  getAll(params: any = null): any
+  getAll(): any
   {
     if(!this.cache$)
     {
-      this.cache$ = this.gatewayApi.get(this.API + '/get', params).pipe(shareReplay(1)) ;
+      this.cache$ = this.gatewayApi.get(this.API + '/get').pipe(shareReplay(1)) ;
+    }
+    return this.cache$;
+  }
+
+  getWithParams(params: any)
+  {
+    if(!this.cache$)
+    {
+      this.cache$ = this.gatewayApi.getWithParams(this.API + '/get', params).pipe(shareReplay(1)) ;
     }
     return this.cache$;
   }

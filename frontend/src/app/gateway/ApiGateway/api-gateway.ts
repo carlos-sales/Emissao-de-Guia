@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { catchError, first, of } from 'rxjs';
-
-import { AuthService } from '../../features/auth/services/auth.service';
-import { DialogService } from '../../shared/services/dialog/dialog.service';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { catchError, of, first } from "rxjs";
+import { Urls } from "../../core/urls/urls";
+import { AuthService } from "../../features/auth/services/auth.service";
+import { DebugService } from "../../shared/services/debug/debug.service";
+import { DialogService } from "../../shared/services/dialog/dialog.service";
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,10 @@ export class ApiGateway
     )
     {}
 
-    get(api: string, params: any = null)
+    get(api: string)
     {
         return this.httpClient
-            .post<any>( api, params )
+            .get<any>( api )
             .pipe( 
                 catchError(err =>
                 {
@@ -43,6 +44,23 @@ export class ApiGateway
                 {
                     console.error('Something get wrong', err);
                     if( err.status == 400 ) this.serviceDialog.errorDialog(err.message);
+                    if( err.status == 401 ) this.serviceAuth.sessionExpired();
+                    if( err.status == 500 ) this.serviceDialog.errorDialog("Erro ao comunicar com o servidor");
+                    return of([]);
+                }
+            ),
+            first()
+        );
+    }
+
+    getWithParams(api: string, params: any = null)
+    {
+        return this.httpClient
+            .post<any>( api, params )
+            .pipe( 
+                catchError(err =>
+                {
+                    console.error('Something get wrong', err);
                     if( err.status == 401 ) this.serviceAuth.sessionExpired();
                     if( err.status == 500 ) this.serviceDialog.errorDialog("Erro ao comunicar com o servidor");
                     return of([]);
