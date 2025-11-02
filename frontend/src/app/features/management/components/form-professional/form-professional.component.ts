@@ -16,6 +16,7 @@ import { SpinnerComponent } from '../../../../shared/components/spinner/spinner.
 import { BreakpointService } from '../../../../shared/services/breakpoint/breakpoint.service';
 import { RouteService } from '../../../../shared/services/route/route.service';
 import { CityService } from '../../service/city/city.service';
+import { FormService } from '../../../../shared/services/form/form.service';
 
 @Component({
   selector: 'form-professional',
@@ -41,6 +42,7 @@ export class FormProfessionalComponent
     private serviceCity: CityService,
     private serviceRoute: RouteService,
     public serviceBreakpoint: BreakpointService,
+    public serviceForm: FormService,
     public formBuilder: FormBuilder,
     public dialog: MatDialog
   )
@@ -143,6 +145,12 @@ export class FormProfessionalComponent
 
   save()
   {
+    if(!this.form.valid)
+    {
+      this.serviceForm.validateAllFormFields(this.form);
+      return;
+    }
+
     const spinner = this.dialog.open( SpinnerDialogComponent, {
       disableClose: true,
       backdropClass: 'blur-backdrop',

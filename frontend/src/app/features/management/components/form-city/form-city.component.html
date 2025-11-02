@@ -29,6 +29,10 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Nome</mat-label>
                                 <input matInput formControlName="cidade">
+                                @if(form.get('cidade')?.invalid)
+                                {
+                                    <mat-error>{{ serviceForm.getErrorMessage( form, 'cidade' ) }}</mat-error>
+                                }
                             </mat-form-field>
                         </p>
                     </div>
@@ -37,11 +41,15 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>UF</mat-label>
                                 <mat-select formControlName="uf">
-                                    @for (element of listFederativeUnit; track element)
-                                    {
-                                        <mat-option [value]="element.sigla">{{element.sigla}}</mat-option>
-                                    }
+                                @for (element of listFederativeUnit; track element)
+                                {
+                                    <mat-option [value]="element.sigla">{{element.sigla}}</mat-option>
+                                }
                                 </mat-select>
+                                @if(form.get('uf')?.invalid)
+                                {
+                                    <mat-error>{{ serviceForm.getErrorMessage( form, 'uf' ) }}</mat-error>
+                                }
                             </mat-form-field>
                         </p>
                     </div>

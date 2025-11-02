@@ -21,6 +21,7 @@ import { CepService } from '../../../../shared/services/cep/cep.service';
 import { CEP } from '../../../../core/interfaces/cep/cep';
 import { map, Observable, startWith } from 'rxjs';
 import {AsyncPipe} from '@angular/common';
+import { FormService } from '../../../../shared/services/form/form.service';
 
 @Component({
   selector: 'form-employee',
@@ -35,7 +36,6 @@ export class FormEmployeeComponent
   public action: string = '';
   public professional!: Employee;
   public companies!: Company[];
-  // public company = new FormControl<string | Company>('');
   public filteredCompanies!: Observable<Company[]>;
   public form!: FormGroup;
   public id!: number | null;
@@ -59,6 +59,7 @@ export class FormEmployeeComponent
     private serviceCep: CepService,
     private serviceRoute: RouteService,
     public serviceBreakpoint: BreakpointService,
+    public serviceForm: FormService,
     public formBuilder: FormBuilder,
     public dialog: MatDialog
   )
@@ -101,7 +102,7 @@ export class FormEmployeeComponent
   {
     this.isLoadingCompanies = true;
     this.serviceCompany
-      .getAll({ativo: 'sim'})
+      .getWithParams({ativo: 'sim'})
       .subscribe(
         (response: any) =>
         {
@@ -152,11 +153,6 @@ export class FormEmployeeComponent
     )
   }
 
-  selectCompany(id: number)
-  {
-    this.form.patchValue({id_empresa: id})
-  }
-
   disableForm(): void
   {
     this.form.disable();
@@ -187,6 +183,35 @@ export class FormEmployeeComponent
     })
   }
 
+  validateCompany()
+  {
+    if(!this.companies.includes(this.form.get('empresa')?.value))
+    {
+      this.clearSelectedCompany();
+      this.form.controls['empresa'].setErrors({'optionNotSelected': true});
+    }
+  }
+
+  selectCompany(company: Company)
+  {
+    this.form.patchValue(
+      {
+        id_empresa: company.id,
+        empresa: company
+      }
+    )
+  }
+
+  clearSelectedCompany()
+  {
+    this.form.patchValue(
+      {
+        id_empresa: null,
+        empresa: null
+      }
+    )
+  }
+
   searchCEP()
   {
     this.setCEPFields({});
@@ -200,7 +225,7 @@ export class FormEmployeeComponent
         {
           if(data.erro)
           {
-            this.form.controls['ceo'].setErrors({'cep-not-found': true});
+            this.form.controls['cep'].setErrors({'notFound': true});
             return;
           }
           this.setCEPFields(data);
@@ -246,6 +271,13 @@ export class FormEmployeeComponent
 
   save()
   {
+    this.validateCompany();
+    if(!this.form.valid)
+    {
+      this.serviceForm.validateAllFormFields(this.form);
+      return;
+    }
+
     const spinner = this.dialog.open( SpinnerDialogComponent, {
       disableClose: true,
       backdropClass: 'blur-backdrop',

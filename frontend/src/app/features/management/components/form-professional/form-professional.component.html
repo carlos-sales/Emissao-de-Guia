@@ -29,6 +29,10 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Nome</mat-label>
                                 <input matInput formControlName="nome">
+                                @if(form.get('nome')?.invalid)
+                                {
+                                    <mat-error>{{ serviceForm.getErrorMessage( form, 'nome' ) }}</mat-error>
+                                }
                             </mat-form-field>
                         </p>
                     </div>
@@ -39,6 +43,10 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Telefone</mat-label>
                                 <input matInput formControlName="telefone" mask="(00) 00000-0000||(00) 0000-0000">
+                                @if(form.get('telefone')?.invalid)
+                                {
+                                    <mat-error>{{ serviceForm.getErrorMessage( form, 'telefone' ) }}</mat-error>
+                                }
                             </mat-form-field>
                         </p>
                     </div>

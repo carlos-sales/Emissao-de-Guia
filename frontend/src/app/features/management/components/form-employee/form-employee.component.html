@@ -29,6 +29,10 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Nome</mat-label>
                                 <input matInput formControlName="nome">
+                                @if(form.get('nome')?.invalid)
+                                {
+                                    <mat-error>{{ serviceForm.getErrorMessage( form, 'nome' ) }}</mat-error>
+                                }
                             </mat-form-field>
                         </p>
                     </div>
@@ -55,6 +59,10 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>E-mail</mat-label>
                                 <input type="email" matInput formControlName="email">
+                                @if(form.get('email')?.invalid)
+                                {
+                                    <mat-error>{{ serviceForm.getErrorMessage( form, 'email' ) }}</mat-error>
+                                }
                             </mat-form-field>
                         </p>
                     </div>
@@ -63,6 +71,10 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Telefone</mat-label>
                                 <input matInput formControlName="telefone" mask="(00) 00000-0000||(00) 0000-0000">
+                                @if(form.get('telefone')?.invalid)
+                                {
+                                    <mat-error>{{ serviceForm.getErrorMessage( form, 'telefone' ) }}</mat-error>
+                                }
                             </mat-form-field>
                         </p>
                     </div>
@@ -70,13 +82,18 @@
                         <p>
                             <mat-form-field appearance="outline">
                                 <mat-label>Empresa</mat-label>
-                                <input type="text" matInput formControlName="empresa" [matAutocomplete]="auto">
+                                <input  type="text" matInput 
+                                        formControlName="empresa" [matAutocomplete]="auto" >
                                 <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                                 @for (option of filteredCompanies | async; track option)
                                 {
-                                    <mat-option [value]="option" (click)="selectCompany(option.id)">{{option.nome}}</mat-option>
+                                    <mat-option [value]="option" (click)="selectCompany(option)">{{option.nome}}</mat-option>
                                 }
                                 </mat-autocomplete>
+                                @if(form.get('id_empresa')?.invalid)
+                                {
+                                    <mat-error>{{ serviceForm.getErrorMessage( form, 'id_empresa' ) }}</mat-error>
+                                }
                             </mat-form-field>
                         </p>
                     </div>
@@ -86,14 +103,10 @@
                         <p>
                             <mat-form-field appearance="outline">
                                 <mat-label>CEP</mat-label>
-                                <input type="cep" matInput formControlName="cep" mask="00000-000" (focusout)="searchCEP()">
-                                @if (form.controls['cep'].hasError('mask'))
+                                <input type="cep" matInput formControlName="cep" mask="00000-000" placeholder="00000-000" (focusout)="searchCEP()">
+                                @if(form.get('cep')?.invalid)
                                 {
-                                    <mat-error>Digite um CEP válido</mat-error>
-                                }
-                                @if (form.controls['cep'].hasError('cep-not-found'))
-                                {
-                                    <mat-error>CEP não encontrado</mat-error>
+                                    <mat-error>{{ serviceForm.getErrorMessage( form, 'cep' ) }}</mat-error>
                                 }
                             </mat-form-field>
                         </p>
@@ -106,6 +119,10 @@
                                 <mat-label>Rua</mat-label>
                                 <input matInput formControlName="endereco" [readonly]="isAddressFieldReadonly.endereco">
                                 @if(isLoadingAddress){<mat-progress-bar mode="indeterminate"></mat-progress-bar>}
+                                @if(form.get('endereco')?.invalid)
+                                {
+                                    <mat-error>{{ serviceForm.getErrorMessage( form, 'endereco' ) }}</mat-error>
+                                }
                             </mat-form-field>
                         </p>
                     </div>
@@ -115,6 +132,10 @@
                                 <mat-label>Bairro</mat-label>
                                 <input matInput formControlName="bairro" [readonly]="isAddressFieldReadonly.bairro">
                                 @if(isLoadingAddress){<mat-progress-bar mode="indeterminate"></mat-progress-bar>}
+                                @if(form.get('bairro')?.invalid)
+                                {
+                                    <mat-error>{{ serviceForm.getErrorMessage( form, 'bairro' ) }}</mat-error>
+                                }
                             </mat-form-field>
                         </p>
                     </div>
@@ -126,6 +147,10 @@
                                 <mat-label>Número</mat-label>
                                 <input matInput formControlName="numero">
                                 @if(isLoadingAddress){<mat-progress-bar mode="indeterminate"></mat-progress-bar>}
+                                @if(form.get('numero')?.invalid)
+                                {
+                                    <mat-error>{{ serviceForm.getErrorMessage( form, 'numero' ) }}</mat-error>
+                                }
                             </mat-form-field>
                         </p>
                     </div>
@@ -144,6 +169,10 @@
                                 <mat-label>Cidade</mat-label>
                                 <input matInput formControlName="cidade" [readonly]="isAddressFieldReadonly.cidade">
                                 @if(isLoadingAddress){<mat-progress-bar mode="indeterminate"></mat-progress-bar>}
+                                @if(form.get('cidade')?.invalid)
+                                {
+                                    <mat-error>{{ serviceForm.getErrorMessage( form, 'cidade' ) }}</mat-error>
+                                }
                             </mat-form-field>
                         </p>
                     </div>
@@ -153,6 +182,10 @@
                                 <mat-label>UF</mat-label>
                                 <input matInput formControlName="uf" [readonly]="isAddressFieldReadonly.uf">
                                 @if(isLoadingAddress){<mat-progress-bar mode="indeterminate"></mat-progress-bar>}
+                                @if(form.get('uf')?.invalid)
+                                {
+                                    <mat-error>{{ serviceForm.getErrorMessage( form, 'uf' ) }}</mat-error>
+                                }
                             </mat-form-field>
                         </p>
                     </div>
