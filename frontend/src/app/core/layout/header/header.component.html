@@ -1,0 +1,15 @@
+<div class="nav">
+  <span class="title">Emissão de Guia Médica</span>
+  <span class="spacer"></span>
+  <span class="header-options">
+    <button mat-icon-button (click)="toggleTheme()" [matTooltip]="isDark ? 'Modo Claro' : 'Modo Escuro'">
+      <mat-icon>{{ isDark ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menuUser">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menuUser="matMenu">
+      <header-user-menu></header-user-menu>
+    </mat-menu>
+  </span>
+</div>

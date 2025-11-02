@@ -1,0 +1,43 @@
+mat-sidenav, mat-sidenav-content, mat-tree 
+{
+    background-color: var(--background-color);
+}
+mat-sidenav, mat-tree
+{
+    padding: 4px 8px;
+}
+mat-sidenav
+{
+    position: fixed;
+    // top: 50px;
+    z-index: 100;
+    border-radius: 0;
+    max-width: 260px;
+    min-width: 260px;
+    border-right: 1px solid var(--azure-dark-color);
+}
+mat-sidenav-content
+{
+    padding: 0px 50px 0px 50px;
+    flex: 1 1 auto;
+    height: calc(100vh - 10px);
+}
+.sidenav-container
+{
+    flex: 1 1 auto;
+}
+mat-tree-node:hover
+{
+    cursor: pointer;
+    font-weight: 500;
+}
+.logo-area
+{
+    width: 100%;
+    text-align: center;
+    margin: 10px auto;
+}
+img
+{
+    height: 40px;
+}

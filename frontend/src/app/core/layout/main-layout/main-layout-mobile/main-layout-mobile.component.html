@@ -1,0 +1,22 @@
+<div class="main-container">
+    <header></header>
+    <breadcrumb></breadcrumb>
+    <router-outlet></router-outlet>
+    <div class="mobile-menu">
+      @for(element of menu; track $index)
+      {
+        @if(element.children)
+        {
+          <div class="mobile-menu-item" [title]="element.name" (click)="openBottomSheet(element.children)">
+            <mat-icon [fontIcon]="element.icon || 'filter_none'"></mat-icon>
+          </div>
+        }
+        @else
+        {
+          <div class="mobile-menu-item" [title]="element.name" (click)="redirectTo(element.route)">
+            <mat-icon [fontIcon]="element.icon || 'filter_none'"></mat-icon>
+          </div>
+        }
+      }
+    </div>
+</div>

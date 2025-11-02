@@ -1,0 +1,28 @@
+@if(isLoading)
+{
+  <spinner></spinner>
+}
+@else
+{
+  <div class="grid-container">
+    <div [class]="serviceBreakpoint.isLarge() ? 'grid-col-6': serviceBreakpoint.isDesktopDevice() ? 'grid-col-4' :  'grid-col-12'">
+      <dashboard-guides-issued  
+        [totalEmployeeGuides]="totalEmployeeGuides"
+        [totalDependentGuides]="totalDependentGuides">
+      </dashboard-guides-issued>
+    </div>
+    <div [class]="serviceBreakpoint.isLarge() ? 'grid-col-6': serviceBreakpoint.isDesktopDevice() ? 'grid-col-4' :  'grid-col-12'">
+      <dashboard-recent-guides
+        [guidesSixMonthAgo]="guidesSixMonthAgo">
+      </dashboard-recent-guides>
+    </div>
+    <div [class]="serviceBreakpoint.isLarge() ? 'grid-col-6': serviceBreakpoint.isDesktopDevice() ? 'grid-col-4' :  'grid-col-12'">
+      <dashboard-registrations
+        [totalEmployee]="totalEmployee"
+        [totalDependent]="totalDependent"
+        [totalCompanies]="totalCompanies"
+        [totalGuides]="totalGuides">
+      </dashboard-registrations>
+    </div>
+  </div>
+}

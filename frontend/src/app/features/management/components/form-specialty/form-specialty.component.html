@@ -1,0 +1,92 @@
+<mat-card >
+    <mat-card-header>
+      <mat-card-title>Especialidade - {{ action | titlecase}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        @if(isLoading)
+        {
+            <spinner></spinner>
+        }
+        @else
+        {
+            <form [formGroup]="form">
+                @if(id)
+                {
+                    <div class="grid-container">
+                        <div [class]="serviceBreakpoint.isDesktopDevice() ? 'grid-col-2' : 'grid-col-12'">
+                            <p>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>ID</mat-label>
+                                    <input matInput formControlName="id" readonly>
+                                </mat-form-field>
+                            </p>
+                        </div>
+                    </div>
+                }
+                <div class="grid-container">
+                    <div class='grid-col-12'>
+                        <p>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Nome</mat-label>
+                                <input matInput formControlName="nome">
+                            </mat-form-field>
+                        </p>
+                    </div>
+                </div>
+                @if(id)
+                {
+                    <div class="grid-container">
+                        <div [class]="serviceBreakpoint.isDesktopDevice() ? 'grid-col-3' : 'grid-col-12'">
+                            <p>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Criado Por</mat-label>
+                                    <input matInput formControlName="created_by" readonly>
+                                </mat-form-field>
+                            </p>
+                        </div>
+                        <div [class]="serviceBreakpoint.isDesktopDevice() ? 'grid-col-3' : 'grid-col-12'">
+                            <p>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Criado Em</mat-label>
+                                    <input matInput type="datetime-local" formControlName="created_at" readonly>
+                                </mat-form-field>
+                            </p>
+                        </div>
+                        <div [class]="serviceBreakpoint.isDesktopDevice() ? 'grid-col-3' : 'grid-col-12'">
+                            <p>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Modificado Por</mat-label>
+                                    <input matInput formControlName="updated_by" readonly>
+                                </mat-form-field>
+                            </p>
+                        </div>
+                        <div [class]="serviceBreakpoint.isDesktopDevice() ? 'grid-col-3' : 'grid-col-12'">
+                            <p>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Modificado Em</mat-label>
+                                    <input matInput type="datetime-local" formControlName="updated_at" readonly>
+                                </mat-form-field>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid-container">
+                        <div class="grid-col-12">
+                            <p>
+                                <mat-checkbox formControlName="ativo">Ativo</mat-checkbox>
+                            </p>
+                        </div>
+                    </div>
+                }
+            </form>
+        }
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-stroked-button (click)="backToPreviousPage()">Voltar</button>
+      @if(action != 'visualizar')
+      {
+        <button mat-flat-button (click)="save()">Salvar</button>
+      }
+    </mat-card-actions>
+</mat-card>
+
+<form-debug [formName]="'Cidade'" [form]="form"></form-debug>

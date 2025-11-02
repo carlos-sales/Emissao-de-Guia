@@ -1,0 +1,29 @@
+.debug-container
+{
+  background-color: var(--black-background);
+  color: var(--text-color-contrast);
+  padding: 8px;
+  text-align: left;
+  font-family: 'Fira Code', monospace;
+  box-shadow: 13px 13px 17px -5px var(--scrollbar-thumb-hover);
+  word-wrap: break-word;
+  margin: 15px 0;
+  width: fit-content;
+}
+.debug-details
+{
+  padding: 15px 20px;
+}
+.debug-details-header
+{
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.is-valid
+{
+  color: var(--color-success)!important;
+}
+.is-invalid
+{
+  color: var(--color-error);
+}

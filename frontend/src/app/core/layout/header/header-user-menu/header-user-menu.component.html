@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="grid-col-12">
+        <div class="container-logo-area">
+            <mat-icon>account_circle</mat-icon>
+            <div>
+                <span>{{username}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="grid-col-12">
+        <button mat-menu-item>Alterar Senha</button>
+        <button mat-menu-item (click)="doLogout()">Sair</button>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="grid-container">
+  <div [class]="serviceBreakpoint.isDesktopDevice() ? 'grid-col-4' : 'grid-col-12'">
+    <div class="centralized-content">
+      <div class="text-center">
+        <h1 class="logo-font">
+          <img src="http://localhost:8000/img/logo.png" alt="Emissão de Guia Médica">
+        </h1>
+        <p>{{isRecovery ? 'Digite o e-mail para recuperar seu acesso' : 'Olá! Faça login para acessar'}}</p>
+        <div class="auth-container-form">
+          @if( isRecovery )
+          {
+            <recovery-password-form @slideFadeFromLeftAnimation></recovery-password-form>
+          }
+          @else
+          {
+            <auth-form @slideFadeFromRightAnimation [@.disabled]="isDisabledAnimation"></auth-form>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  @if(serviceBreakpoint.isDesktopDevice())
+  {
+    <div class="grid-col-8">
+      <div class="background"></div>
+    </div>
+  }
+</div>
+

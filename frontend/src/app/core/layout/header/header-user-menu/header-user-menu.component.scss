@@ -1,0 +1,18 @@
+.container
+{
+    width: 200px;
+    text-align: center;
+    margin-top: 15px;
+}
+.container-logo-area
+{
+    margin: 20px 0;
+    font-size: var(--mat-menu-item-label-text-size, var(--mat-app-label-large-size));
+}
+mat-icon
+{
+    height: 100px;
+    width: 100px;
+    font-size: 100px;
+    color: var(--azure-dark-text-color);
+}

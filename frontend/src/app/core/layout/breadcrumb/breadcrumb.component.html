@@ -1,0 +1,18 @@
+@if( breadcrumbs.length)
+{
+    <nav class="breadcrumb">
+        @for(element of breadcrumbs; track element; let i = $index)
+        {
+            @if($last)
+            {
+                <span class="breadcrumb-current">{{ element.label | titlecase}}</span>
+            }
+            @else
+            {
+                @if(element.clickable){ <a [routerLink]="element.url" class="breadcrumb-link">{{ element.label }}</a> }
+                @else{ <span>{{ element.label }}</span> }
+                <mat-icon class="breadcrumb-separator">chevron_right</mat-icon>
+            }
+        }
+    </nav>
+}

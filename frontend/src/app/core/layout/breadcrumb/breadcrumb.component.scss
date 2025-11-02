@@ -1,0 +1,25 @@
+.breadcrumb
+{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    flex: 1;
+    word-wrap: break-word;
+    margin-bottom: 15px;
+}
+
+.breadcrumb-link
+{
+    text-decoration: none;
+    color: var(--mat-sys-primary);
+}
+
+.breadcrumb-current
+{
+    font-weight: 500;
+}
+
+.breadcrumb-separator
+{
+    opacity: 0.6;
+}

@@ -1,0 +1,15 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Cadastros Realizados</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="content-center">
+      <canvas   id="registrations" 
+                style="position: relative;"
+                [style.Height]="serviceBreakpoint.isDesktopDevice() ? '460px' : '380px'"
+                [style.Width]="serviceBreakpoint.isDesktopDevice() ? '460px' : '380px'">
+        {{chart}}
+      </canvas>
+    </div>
+  </mat-card-content>
+</mat-card>

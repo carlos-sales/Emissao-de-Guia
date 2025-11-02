@@ -1,0 +1,12 @@
+@if(isDebug)
+{
+    <div class="debug-container">
+      <div class="debug-details">
+          <div class="debug-details-header">
+            _debug form
+          </div>
+          <pre><strong>Form:</strong> {{formName}}<br><strong>Valid: <span [class]=" form != undefined && form.valid ? 'is-valid' : 'is-invalid' ">{{ ( form != undefined ? form.valid : 'Erro no Formulário' ) }}</span> </strong></pre>
+          <pre><b>Values:</b> <br>{{ form!.value | json }}</pre>
+      </div>
+    </div>
+}

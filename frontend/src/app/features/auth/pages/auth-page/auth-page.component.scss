@@ -1,0 +1,24 @@
+.auth-container-form
+{
+  position: relative;
+  width: 350px;
+  min-height: 300px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+
+  *
+  {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.logo-font img
+{
+  width: 250px;
+}

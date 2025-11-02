@@ -1,0 +1,5 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content [innerHTML]="data.message || 'Algo deu errado. Por favor, tente novamente mais tarde'"></div>
+<div mat-dialog-actions align="center">
+  <button mat-flat-button color="warn" mat-dialog-close>Fechar</button>
+</div>

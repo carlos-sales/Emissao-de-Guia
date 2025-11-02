@@ -1,0 +1,22 @@
+.mdc-dialog__title
+{
+  color: var(--color-success);
+  font-size: 11pt;
+  padding: 10px 20px;
+  height: 40px;
+  min-width: 500px;
+}
+.mdc-dialog__title::before
+{
+  height: 20px;
+}
+.mdc-dialog__content
+{
+  margin: 40px 0 20px 0;
+}
+.mat-success
+{
+    // --color-success-contrast:
+    background-color: var(--color-success);
+    color: var(--color-success-contrast);
+}

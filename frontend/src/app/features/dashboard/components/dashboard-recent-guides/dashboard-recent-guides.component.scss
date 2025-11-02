@@ -1,0 +1,38 @@
+mat-card
+{
+    min-height: 670px;
+    max-height: 670px;
+    align-items: center;
+}
+mat-card-content
+{
+    padding: 20px;
+}
+table
+{
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom,
+                                        color-stop(0.00,  rgba(0,0,0,1)),
+                                        color-stop(0.70,  rgba(0,0,0,1)),
+                                        color-stop(1.00,  rgba(0,0,0,0)));
+    mask-image: -webkit-gradient(linear, left top, left bottom,
+                color-stop(0.00,  rgba(0,0,0,1)),
+                color-stop(0.70,  rgba(0,0,0,1)),
+                color-stop(1.00,  rgba(0,0,0,0)));
+}
+.mat-mdc-row .mat-mdc-cell
+{
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+}
+.mat-mdc-header-cell
+{
+    font-size: 10pt;
+}
+.mat-mdc-cell
+{
+    font-size: 10pt;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

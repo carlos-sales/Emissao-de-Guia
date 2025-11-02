@@ -1,0 +1,83 @@
+<mat-card >
+  <mat-card-header>
+    <mat-card-title>Lista de Cidades</mat-card-title>
+    <div class="button-absolute-right">
+      <button mat-stroked-button
+              [routerLink]="'novo/'"
+              title="Adicionar Cidade">
+        <mat-icon class="small-icon">add</mat-icon>Cidade
+      </button>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    @if(isLoading)
+    {
+      <spinner></spinner>
+    }
+    @else
+    {
+      @if(dataSource.data.length)
+      {
+        <mat-form-field>
+          <mat-label>Pesquisar</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Samwise Gamgee" #input>
+        </mat-form-field>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z2 responsive-mat-table">
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element" [class.deleted-line]="element.ativo == 'nao'" data-label="ID"> {{element.id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let element" [class.deleted-line]="element.ativo == 'nao'" data-label="Nome"> {{element.cidade}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="federative_unit">
+            <th mat-header-cell *matHeaderCellDef> UF </th>
+            <td mat-cell *matCellDef="let element" [class.deleted-line]="element.ativo == 'nao'"  data-label="UF"> {{element.uf}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>  </th>
+            <td mat-cell *matCellDef="let element">
+              <div class="grid-container grid-actions">
+                <div class="grid-col-4">
+                  <div [routerLink]="'visualizar/' + element.id">
+                    <mat-icon title="Visualizar">visibility</mat-icon>
+                  </div>
+                </div>
+                @if(element.ativo == 'sim')
+                {
+                  <div class="grid-col-4">
+                    <div [routerLink]="'editar/' + element.id">
+                      <mat-icon class="edit" title="Editar">edit</mat-icon>
+                    </div>
+                  </div>
+                  <div class="grid-col-4">
+                    <mat-icon class="delete" title="Desativar" (click)="updateStatus(false, element.id)">delete_forever</mat-icon>
+                  </div>
+                }
+                @else
+                {
+                  <div class="grid-col-4">
+                    <mat-icon class="restore" title="Ativar" (click)="updateStatus(true, element.id)">restore_from_trash</mat-icon>
+                  </div>
+                }
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      }
+      @else
+      {
+        <no-data></no-data>
+      }
+    }
+  </mat-card-content>
+</mat-card>

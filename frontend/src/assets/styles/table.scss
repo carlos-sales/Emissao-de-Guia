@@ -1,0 +1,92 @@
+table
+{
+    width: 100%;
+}
+.grid-actions mat-icon
+{
+    cursor: pointer;
+}
+.mat-column-actions
+{
+    flex: 0 0 15% !important;
+    width: 15% !important;
+}
+// tablet
+@media (max-width: 1279px)
+{
+    .grid-actions
+    {
+        grid-template-columns: repeat(12, 1fr);
+    }
+}
+// Mobile
+@media (max-width: 959px)
+{
+    .grid-actions
+    {
+        grid-template-columns: repeat(15, 1fr);
+    }
+    .mat-column-actions
+    {
+        flex: unset!important;
+        width: 100% !important;
+    }
+    .mat-mdc-table .mat-mdc-header-row
+    {
+        display: none;
+    }
+    .mat-mdc-table
+    {
+        border: 0;
+        vertical-align: middle
+    }
+    .mat-mdc-table caption
+    {
+        font-size: 1em;
+    }
+    .mat-mdc-table .mdc-data-table__row
+    {
+        border-bottom: 2px solid #000;
+        margin-bottom: 35px;
+    }
+    .mat-mdc-table .mdc-data-table__cell, .mdc-data-table__row:last-child .mat-mdc-cell
+    {
+        border-bottom: 1px solid #ddd !important;
+        display: block;
+        font-size: 1em;
+        text-align: right;
+        padding: 15px 16px;
+    }
+    .mat-mdc-table .mdc-data-table__cell:before
+    {
+        content: attr(data-label);
+        float: left;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+    .mat-mdc-table .mat-mdc-header-cell:last-child
+    {
+        border-bottom: 0;
+    }
+    .mat-mdc-table .mat-mdc-header-cell:first-child
+    {
+        margin-top: 4%;
+    }
+    td:first-of-type
+    {
+        padding: 15px 16px;
+    }
+    td:last-child:after
+    {
+        content: "";
+        display: block;
+        height: 1px;
+        background: var(--black-background);
+        margin: 35px 50px;
+    }
+    tr:last-child td:last-child:after
+    {
+        background: none;
+        margin: 15px;
+    }
+}

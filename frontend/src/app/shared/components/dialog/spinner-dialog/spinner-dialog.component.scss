@@ -1,0 +1,22 @@
+.spinner-content
+{
+    margin: 35px 50px 20px 50px;
+}
+.absolute-center
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    display: contents;
+}
+h3
+{
+    font-size: 1.2rem;
+    text-align: center;
+}
+.spinner
+{
+    margin: 5px auto 15px auto;
+}

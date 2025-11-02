@@ -1,0 +1,27 @@
+.nav
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+.title, mat-menu
+{
+    // background-color: var(--azure-dark-color);
+    color: var(--azure-dark-text-color);
+    font-family: asimovian;
+}
+.title
+{
+    width: 350px;
+}
+.header-options
+{
+    width: 100%;
+    text-align: end;
+}
+.header-options mat-icon
+{
+    color: var(--azure-dark-text-color);
+    float: right;
+}

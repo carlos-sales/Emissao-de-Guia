@@ -1,0 +1,27 @@
+mat-card
+{
+    align-items: center;
+}
+mat-card-content
+{
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    display: ruby;
+}
+canvas
+{
+    margin-top: 30px;
+    position: relative;
+}
+.canva-desktop
+{
+    height: 475px!important;
+    width: 475px!important;
+}
+.canva-mobile
+{
+    height: 375px!important;
+    width: 375px!important;
+}

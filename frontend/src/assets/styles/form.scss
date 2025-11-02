@@ -1,0 +1,24 @@
+mat-form-field
+{
+  width: 100%;
+}
+mat-form-field
+{
+  transition: margin-bottom 0.3s ease;
+
+  &:has(mat-error) {
+    margin-bottom: 1rem;
+  }
+}
+.mat-internal-form-field
+{
+  color: var(--text-color)!important;
+}
+form
+{
+  margin: 15px 0;
+}
+button + button
+{
+  margin-left: 15px;
+}

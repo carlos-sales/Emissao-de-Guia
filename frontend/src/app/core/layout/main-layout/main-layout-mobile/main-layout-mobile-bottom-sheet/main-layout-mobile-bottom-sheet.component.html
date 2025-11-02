@@ -1,0 +1,8 @@
+<mat-nav-list>
+    @for(element of menu; track $index)
+    {
+        <a mat-list-item (click)="openLink($event, element.route)">
+            {{element.name}}
+        </a>
+    }
+</mat-nav-list>
